@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>EcoVarnish – Barniz ecológico con aceite de cocina usado</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef1e8;--surface:#fff;--ink:#1c2a1e;--muted:#4e5e50;--line:#cfd7c6;--hero:#1c2a1e;--hero-ink:#f1f3e9;--amber:#b87710;--amber-soft:#f6e6c4;--warn:#9b2c1d;--warn-soft:#f8e1dc;--ok-soft:#dcebd3;
+--serif:"Young Serif",Georgia,serif;--sans:"Instrument Sans",system-ui,Segoe UI,Arial,sans-serif;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121a14;--surface:#1b261d;--ink:#e8ece0;--muted:#a9b6a9;--line:#2f3f32;--hero:#0b110c;--amber:#e2a23c;--amber-soft:#3a2c12;--warn:#ff9a88;--warn-soft:#3b1d18;--ok-soft:#21331f}}
+:root[data-theme="dark"]{--bg:#121a14;--surface:#1b261d;--ink:#e8ece0;--muted:#a9b6a9;--line:#2f3f32;--hero:#0b110c;--amber:#e2a23c;--amber-soft:#3a2c12;--warn:#ff9a88;--warn-soft:#3b1d18;--ok-soft:#21331f}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.65 var(--sans)}
+h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.2;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+.wrap{max-width:1000px;margin:0 auto;padding:0 22px}
+header.hero{background:var(--hero);color:var(--hero-ink);padding:64px 0 56px}
+.hero h1{font-size:clamp(2.3rem,7vw,4.2rem);max-width:15ch}
+.hero p{max-width:56ch;font-size:1.1rem;color:#c9d2c2;margin:20px 0 28px}
+nav{display:flex;flex-wrap:wrap;gap:10px}
+nav a{padding:9px 16px;border:1px solid #4a5d4c;border-radius:999px;text-decoration:none;font-size:.95rem;color:var(--hero-ink)}
+nav a:hover{background:var(--amber);border-color:var(--amber);color:#1c1608}
+.drop{display:inline-block;width:14px;height:14px;background:var(--amber);border-radius:50% 50% 50% 0;transform:rotate(-45deg);margin-right:10px}
+section{padding:56px 0 8px}
+section h2{font-size:clamp(1.7rem,4vw,2.4rem);margin-bottom:12px}
+.lead{max-width:68ch;color:var(--muted);margin:0 0 26px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+.box{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:20px}
+.box h3{font-size:1.15rem;margin-bottom:6px}
+.box p{margin:0;color:var(--muted);font-size:.97rem}
+.compare{width:100%;border-collapse:collapse;background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden;font-size:.96rem}
+.compare th,.compare td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+.compare th{background:var(--ok-soft)}
+.scroll{overflow-x:auto}
+ol.steps{list-style:none;margin:0;padding:0;counter-reset:s;position:relative}
+ol.steps li{counter-increment:s;position:relative;padding:0 0 28px 62px}
+ol.steps li::before{content:counter(s);position:absolute;left:0;top:0;width:42px;height:42px;border-radius:50%;background:var(--amber);color:#1c1608;font:600 1.1rem var(--sans);display:grid;place-items:center}
+ol.steps li::after{content:"";position:absolute;left:20px;top:46px;bottom:4px;width:2px;background:var(--line)}
+ol.steps li:last-child::after{display:none}
+ol.steps h3{font-size:1.25rem;margin-bottom:4px}
+ol.steps p{margin:0;color:var(--muted);max-width:66ch}
+.tip{display:inline-block;margin-top:8px;font-size:.9rem;background:var(--amber-soft);padding:4px 10px;border-radius:6px}
+ul.mat{columns:2 260px;margin:0;padding-left:20px;color:var(--muted)}
+ul.mat li{margin-bottom:6px}
+.warnlist{display:grid;gap:12px}
+.warn{background:var(--warn-soft);border-left:5px solid var(--warn);border-radius:6px;padding:14px 18px}
+.warn strong{color:var(--warn)}
+.warn p{margin:4px 0 0}
+.usegrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.note{background:var(--amber-soft);border-radius:10px;padding:16px 20px;margin-top:22px;max-width:75ch}
+footer{margin-top:64px;padding:30px 0 40px;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
+.hdrbtn{background:none;border:1px solid #4a5d4c;color:var(--hero-ink);border-radius:999px;padding:6px 14px;font:inherit;font-size:.85rem;cursor:pointer;float:right}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media print{.hdrbtn,nav{display:none}body{background:#fff}}
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+<button class="hdrbtn" id="theme" type="button">Modo claro/oscuro</button>
+<p style="margin:0 0 14px;color:#c9d2c2"><span class="drop"></span>Equipo EcoVarnish · Rally Latinoamericano de Innovación 2026</p>
+<h1>De aceite usado a barniz para madera</h1>
+<p>Guía para fabricar EcoVarnish en casa o en el taller: recolectamos el aceite de cocina que ya no sirve y le damos una segunda vida protegiendo la madera, en lugar de contaminar el agua.</p>
+<nav aria-label="Secciones"><a href="#problema">El problema</a><a href="#ventajas">Ventajas</a><a href="#materiales">Materiales</a><a href="#pasos">Paso a paso</a><a href="#uso">Cómo se usa</a><a href="#precauciones">Precauciones</a></nav>
+</div></header>
+
+<main class="wrap">
+<section id="problema">
+<h2>El problema que resuelve</h2>
+<p class="lead">El aceite de cocina usado que se tira por el desagüe se endurece, tapa las tuberías, provoca inundaciones y llega a ríos donde daña animales y plantas. Mientras tanto, muchos barnices comerciales contienen derivados del petróleo que liberan gases nocivos. EcoVarnish ataca ambos problemas con el mismo recurso.</p>
+</section>
+
+<section id="ventajas">
+<h2>Ventajas de elaborar EcoVarnish</h2>
+<div class="grid">
+<div class="box"><h3>Cuida el agua</h3><p>El aceite deja de ir a drenajes, ríos y suelo, evitando taponamientos e inundaciones.</p></div>
+<div class="box"><h3>Menos químicos dañinos</h3><p>Busca reducir olores fuertes y compuestos orgánicos volátiles (COV) de los barnices derivados del petróleo.</p></div>
+<div class="box"><h3>Económico</h3><p>La materia prima principal es un residuo de bajo costo o donado. Se prepara con utensilios de cocina comunes.</p></div>
+<div class="box"><h3>Economía circular local</h3><p>Impulsa la recolección comunitaria y puede generar empleos verdes para carpinteros y artesanos.</p></div>
+<div class="box"><h3>Biodegradable</h3><p>Es un recubrimiento de origen vegetal, más amigable con las personas y el ambiente.</p></div>
+<div class="box"><h3>Más valor que el jabón o el biodiésel</h3><p>No exige infraestructura de combustibles ni compite en un mercado saturado de jabones artesanales.</p></div>
+</div>
+<h3 style="margin:30px 0 12px;font-size:1.3rem">EcoVarnish frente al barniz tradicional</h3>
+<div class="scroll"><table class="compare">
+<tr><th></th><th>EcoVarnish</th><th>Barniz sintético</th></tr>
+<tr><td>Origen</td><td>Aceite vegetal reutilizado</td><td>Derivados del petróleo</td></tr>
+<tr><td>Olor y gases (COV)</td><td>Menor, según se busca con la formulación</td><td>Fuerte, con emisiones nocivas</td></tr>
+<tr><td>Costo de la materia prima</td><td>Muy bajo o donada</td><td>Importada, más cara</td></tr>
+<tr><td>Impacto ambiental</td><td>Evita contaminar el agua; biodegradable</td><td>Mayor huella de carbono</td></tr>
+</table></div>
+</section>
+
+<section id="materiales">
+<h2>Materiales y equipo</h2>
+<p class="lead">Todo se consigue fácilmente. Reserva los utensilios solo para este proyecto: no los uses luego para cocinar.</p>
+<div class="box"><ul class="mat">
+<li>Aceite de cocina usado (hogares, comedores, restaurantes)</li>
+<li>Colador fino o tela de filtrar</li>
+<li>Olla metálica para calentar con control</li>
+<li>Maicena, para mejorar la consistencia</li>
+<li>Recipientes de vidrio o metal para mezclar</li>
+<li>Cuchara o espátula de madera o metal</li>
+<li>Frascos con tapa hermética para guardar</li>
+<li>Guantes, lentes y pinzas o paños gruesos</li>
+<li>Termómetro de cocina (recomendado)</li>
+<li>Un espacio bien ventilado</li>
+</ul></div>
+</section>
+
+<section id="pasos">
+<h2>Paso a paso de elaboración</h2>
+<p class="lead">Sigue el orden. Cada paso prepara el siguiente.</p>
+<ol class="steps">
+<li><h3>Recolecta el aceite</h3><p>Junta el aceite usado en una botella o frasco limpio con tapa. Debe estar frío antes de guardarlo. Nunca lo tires por el desagüe.</p></li>
+<li><h3>Cuélalo para quitar restos de comida</h3><p>Pásalo por el colador fino o por una tela limpia sobre un recipiente. Repite si todavía ves partículas.</p></li>
+<li><h3>Déjalo reposar</h3><p>Deja el aceite colado quieto varias horas. Con el tiempo, el agua y las impurezas bajan al fondo y se separan.</p><span class="tip">Pasa con cuidado a otro recipiente sin remover el fondo.</span></li>
+<li><h3>Caliéntalo con cuidado para eliminar el agua</h3><p>Calienta a fuego bajo, sin dejar de vigilarlo, hasta que ya no salgan burbujas ni chisporroteos. Eso indica que el agua se evaporó. No dejes que humee.</p><span class="tip">Usa termómetro y no lo dejes solo ni un momento.</span></li>
+<li><h3>Deja enfriar a temperatura segura</h3><p>Retira la olla del fuego y espera hasta que el aceite esté tibio, no caliente, antes de mezclar.</p></li>
+<li><h3>Mezcla con la maicena</h3><p>Incorpora la maicena poco a poco, revolviendo sin parar para evitar grumos, hasta lograr una consistencia suave y uniforme, como de pintura ligera.</p><span class="tip">Las proporciones exactas se ajustan con pruebas: empieza con poca maicena y aumenta.</span></li>
+<li><h3>Prueba antes de usarlo</h3><p>Aplica una capa fina sobre un trozo de madera de muestra. Revisa que seque bien, proteja y deje buen acabado, y compáralo con un barniz tradicional.</p></li>
+<li><h3>Envasa y rotula</h3><p>Pasa el barniz a frascos limpios con tapa hermética. Anota la fecha de preparación y guárdalo en un lugar fresco, oscuro y lejos de fuentes de calor.</p></li>
+</ol>
+</section>
+
+<section id="uso">
+<h2>Cómo se utiliza</h2>
+<div class="usegrid">
+<div class="box"><h3>1. Prepara la madera</h3><p>Debe estar limpia, seca y lijada. Quita polvo y grasa con un paño seco.</p></div>
+<div class="box"><h3>2. Aplica capas finas</h3><p>Usa brocha o paño en la dirección de la veta. Mejor varias capas delgadas que una gruesa.</p></div>
+<div class="box"><h3>3. Deja secar</h3><p>Espera el secado completo entre capas, en un lugar ventilado y sin polvo. Puede tardar más que un barniz comercial.</p></div>
+<div class="box"><h3>4. Lija suave y repite</h3><p>Lija muy suavemente entre capas para un acabado liso. Aplica de dos a tres capas según la protección deseada.</p></div>
+</div>
+<p class="note"><strong>Dónde usarlo:</strong> muebles, utensilios decorativos, artesanías y carpintería de interior. Antes de comercializarlo, valida con pruebas que seque correctamente, resista el uso y proteja la madera.</p>
+</section>
+
+<section id="precauciones">
+<h2>Medidas de precaución</h2>
+<p class="lead">El aceite caliente y los trapos con aceite son riesgos reales. Lee esto antes de empezar.</p>
+<div class="warnlist">
+<div class="warn"><strong>Quemaduras.</strong><p>El aceite caliente causa quemaduras graves. Usa guantes, lentes y paños gruesos, mantén fuera del paso a niños y mascotas, y mueve la olla con ambas manos.</p></div>
+<div class="warn"><strong>Fuego.</strong><p>Calienta a fuego bajo, nunca sin supervisión. Si el aceite se prende, tapa la olla y apaga el fuego. Jamás le eches agua.</p></div>
+<div class="warn"><strong>Agua en aceite caliente.</strong><p>Una gota de agua provoca salpicaduras violentas. Usa utensilios completamente secos.</p></div>
+<div class="warn"><strong>Trapos con aceite.</strong><p>Los paños empapados en aceite pueden calentarse solos y prenderse. Extiéndelos al aire para que sequen o sumérgelos en agua antes de botarlos. Nunca los amontones.</p></div>
+<div class="warn"><strong>Ventilación.</strong><p>Trabaja en un lugar bien ventilado, lejos de llamas, chispas y fuentes de calor.</p></div>
+<div class="warn"><strong>Nunca tires el sobrante por el desagüe.</strong><p>Los restos deben ir en un frasco cerrado al punto de acopio o a la basura. Etiqueta el barniz como "no comestible" y guárdalo lejos de niños.</p></div>
+</div>
+</section>
+</main>
+
+<footer><div class="wrap">Proyecto EcoVarnish · Sede Juigalpa, Chontales · Desafío 07: Reutilización de aceite doméstico · Rally Latinoamericano de Innovación 2026</div></footer>
+
+<script>
+(function(){
+var b=document.getElementById('theme'),r=document.documentElement;
+b.addEventListener('click',function(){
+var dark=r.dataset.theme==='dark'||(!r.dataset.theme&&matchMedia('(prefers-color-scheme: dark)').matches);
+r.dataset.theme=dark?'light':'dark';
+});
+})();
+</script>
+</body>
+</html>
