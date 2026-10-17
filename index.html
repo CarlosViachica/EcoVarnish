@@ -29,36 +29,6 @@
       padding-bottom: env(safe-area-inset-bottom, 0px)
     }
 
-    :root[data-theme="dark"] {
-      --bg: #121a14;
-      --surface: #1b261d;
-      --ink: #e8ece0;
-      --muted: #a9b6a9;
-      --line: #2f3f32;
-      --hero: #0b110c;
-      --amber: #e2a23c;
-      --amber-soft: #3a2c12;
-      --warn: #ff9a88;
-      --warn-soft: #3b1d18;
-      --ok-soft: #21331f
-    }
-
-    @media (prefers-color-scheme:dark) {
-      :root:not([data-theme="light"]) {
-        --bg: #121a14;
-        --surface: #1b261d;
-        --ink: #e8ece0;
-        --muted: #a9b6a9;
-        --line: #2f3f32;
-        --hero: #0b110c;
-        --amber: #e2a23c;
-        --amber-soft: #3a2c12;
-        --warn: #ff9a88;
-        --warn-soft: #3b1d18;
-        --ok-soft: #21331f
-      }
-    }
-
     html {
       scroll-padding-top: env(safe-area-inset-top, 0px);
       scroll-behavior: smooth
@@ -322,6 +292,10 @@
       gap: 12px
     }
 
+    .hidden {
+      display: none !important
+    }
+
     .warn {
       background: var(--warn-soft);
       border-left: 5px solid var(--warn);
@@ -349,6 +323,94 @@
       padding: 16px 20px;
       margin-top: 22px;
       max-width: 75ch
+    }
+
+    .form-card,
+    .pricing-box {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 22px
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      align-items: end
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px
+    }
+
+    .field label {
+      font-size: .9rem;
+      color: var(--muted)
+    }
+
+    .field input,
+    .field select,
+    .field button {
+      font: inherit
+    }
+
+    .field input,
+    .field select {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--bg);
+      color: var(--ink);
+      padding: 10px 12px
+    }
+
+    .cta {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--hero);
+      color: var(--hero-ink);
+      padding: 10px 16px;
+      cursor: pointer;
+      transition: transform .2s ease
+    }
+
+    .cta:hover {
+      transform: translateY(-1px)
+    }
+
+    .registro-resumen {
+      margin-top: 18px;
+      border-top: 1px solid var(--line);
+      padding-top: 14px
+    }
+
+    .registro-resumen p {
+      margin: 0;
+      color: var(--muted)
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+      margin-top: 12px
+    }
+
+    .price-tag {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      color: var(--ink)
+    }
+
+    .precio-calc {
+      margin-top: 18px;
+      background: var(--ok-soft);
+      border-left: 5px solid #3d7a38;
+      border-radius: 10px;
+      padding: 14px 18px
     }
 
     footer {
@@ -394,7 +456,6 @@
 <body>
   <header class="hero">
     <div class="wrap">
-      <button class="hdrbtn" id="theme" type="button">Modo claro/oscuro</button>
       <h1><span class="line">De aceite usado a</span><span class="line">barniz para madera</span></h1>
       <p>Guía para fabricar EcoVarnish en casa o en el taller: recolectamos el aceite de cocina que ya no sirve y le
         damos una segunda vida protegiendo la madera, en lugar de contaminar el agua.</p>
@@ -442,36 +503,6 @@
           <p>No exige infraestructura de combustibles ni compite en un mercado saturado de jabones artesanales.</p>
         </div>
       </div>
-      <h3 style="margin:30px 0 12px;font-size:1.3rem">EcoVarnish frente al barniz tradicional</h3>
-      <div class="scroll">
-        <table class="compare">
-          <tr>
-            <th></th>
-            <th>EcoVarnish</th>
-            <th>Barniz sintético</th>
-          </tr>
-          <tr>
-            <td>Origen</td>
-            <td>Aceite vegetal reutilizado</td>
-            <td>Derivados del petróleo</td>
-          </tr>
-          <tr>
-            <td>Olor y gases (COV)</td>
-            <td>Menor, según se busca con la formulación</td>
-            <td>Fuerte, con emisiones nocivas</td>
-          </tr>
-          <tr>
-            <td>Costo de la materia prima</td>
-            <td>Muy bajo o donada</td>
-            <td>Importada, más cara</td>
-          </tr>
-          <tr>
-            <td>Impacto ambiental</td>
-            <td>Evita contaminar el agua; biodegradable</td>
-            <td>Mayor huella de carbono</td>
-          </tr>
-        </table>
-      </div>
     </section>
 
     <section id="materiales">
@@ -494,7 +525,67 @@
       </div>
     </section>
 
-    <section id="pasos">
+    <section id="registro-grasa">
+      <h2>Formulario de producción</h2>
+      <div class="form-card">
+        <form id="registroGrasa" novalidate>
+          <div class="form-grid">
+            <div class="field">
+              <label for="cantidadGrasa">Cantidad de aceite a transformar</label>
+              <input id="cantidadGrasa" name="cantidadGrasa" type="number" min="0.01" step="0.01" value="1000" placeholder="Ej. 3000" inputmode="decimal">
+            </div>
+            <div class="field">
+              <label for="unidadGrasa">Unidad</label>
+              <select id="unidadGrasa" name="unidadGrasa">
+                <option value="ml">ml</option>
+                <option value="lt">lt</option>
+              </select>
+            </div>
+            <div class="field">
+              <button class="cta" type="submit">Calcular costo</button>
+            </div>
+          </div>
+        </form>
+        <div class="registro-resumen">
+          <p id="resumenGrasa">Ingresa la cantidad de aceite para calcular el costo y el precio de venta estimado.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="precio" class="hidden">
+      <h2>Presupuesto de costos y gastos</h2>
+      <div class="scroll">
+        <table class="compare" aria-label="Presupuesto de costos del barniz">
+          <thead>
+            <tr>
+              <th>Concepto</th>
+              <th>Cantidad</th>
+              <th>Costo</th>
+            </tr>
+          </thead>
+          <tbody id="costosTablaBody"></tbody>
+          <tfoot>
+            <tr>
+              <th colspan="2">Total</th>
+              <th id="costoTotalTabla">C$0.00</th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      <div class="pricing-grid">
+        <div class="pricing-box">
+          <h3>Costo total del lote</h3>
+          <div id="costoTotal" class="price-tag">C$0.00</div>
+        </div>
+        <div class="pricing-box">
+          <h3>Precio de venta estimado</h3>
+          <div id="ventaTotal" class="price-tag">C$0.00</div>
+          <p id="ventaDetalle">Se calcula aplicando un margen del 20% sobre el costo total.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="pasos" class="hidden">
       <h2>Paso a paso de elaboración</h2>
       <p class="lead">Sigue el orden. Cada paso prepara el siguiente.</p>
       <ol class="steps">
@@ -504,14 +595,12 @@
             <p>Junta el aceite usado en una botella o frasco limpio con tapa. Debe estar frío antes de guardarlo. Nunca lo
               tires por el desagüe.</p>
           </div>
-          <figure class="step-visual"><img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=900&q=80" alt="Frascos con aceite de cocina usado"></figure>
         </li>
         <li>
           <div class="step-copy">
             <h3>Cuélalo para quitar restos de comida</h3>
             <p>Pásalo por el colador fino o por una tela limpia sobre un recipiente. Repite si todavía ves partículas.</p>
           </div>
-          <figure class="step-visual"><img src="https://images.unsplash.com/photo-1582719471384-8b6a2e1f0a7a?auto=format&fit=crop&w=900&q=80" alt="Filtrando aceite usado con un colador"></figure>
         </li>
         <li>
           <div class="step-copy">
@@ -519,7 +608,6 @@
             <p>Deja el aceite colado quieto varias horas. Con el tiempo, el agua y las impurezas bajan al fondo y se
               separan.</p><span class="tip">Pasa con cuidado a otro recipiente sin remover el fondo.</span>
           </div>
-          <figure class="step-visual"><img src="https://images.unsplash.com/photo-1528712306091-ed0763094c98?auto=format&fit=crop&w=900&q=80" alt="Aceite reposando en un recipiente"></figure>
         </li>
         <li>
           <div class="step-copy">
@@ -528,14 +616,12 @@
               que el agua se evaporó. No dejes que humee.</p><span class="tip">Usa termómetro y no lo dejes solo ni un
               momento.</span>
           </div>
-          <figure class="step-visual"><img src="https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?auto=format&fit=crop&w=900&q=80" alt="Aceite calentándose a fuego bajo"></figure>
         </li>
         <li>
           <div class="step-copy">
             <h3>Deja enfriar a temperatura segura</h3>
             <p>Retira la olla del fuego y espera hasta que el aceite esté tibio, no caliente, antes de mezclar.</p>
           </div>
-          <figure class="step-visual"><img src="https://images.unsplash.com/photo-1514996937319-344454492b37?auto=format&fit=crop&w=900&q=80" alt="Aceite enfriándose en una olla"></figure>
         </li>
         <li>
           <div class="step-copy">
@@ -544,7 +630,6 @@
               suave y uniforme, como de pintura ligera.</p><span class="tip">Las proporciones exactas se ajustan con
               pruebas: empieza con poca maicena y aumenta.</span>
           </div>
-          <figure class="step-visual"><img src="https://images.unsplash.com/photo-1592150621744-aca64f48394a?auto=format&fit=crop&w=900&q=80" alt="Mezclando maicena con aceite"></figure>
         </li>
         <li>
           <div class="step-copy">
@@ -552,7 +637,6 @@
             <p>Aplica una capa fina sobre un trozo de madera de muestra. Revisa que seque bien, proteja y deje buen
               acabado, y compáralo con un barniz tradicional.</p>
           </div>
-          <figure class="step-visual"><img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=80" alt="Probando el barniz sobre una pieza de madera"></figure>
         </li>
         <li>
           <div class="step-copy">
@@ -560,7 +644,6 @@
             <p>Pasa el barniz a frascos limpios con tapa hermética. Anota la fecha de preparación y guárdalo en un lugar
               fresco, oscuro y lejos de fuentes de calor.</p>
           </div>
-          <figure class="step-visual"><img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=900&q=80" alt="Frascos con barniz listo para guardar"></figure>
         </li>
       </ol>
     </section>
@@ -629,13 +712,120 @@
 
   <script>
     (function () {
-      var b = document.getElementById('theme'), r = document.documentElement;
-      if (!r.dataset.theme) r.dataset.theme = 'light';
+      var form = document.getElementById('registroGrasa');
+      var resumen = document.getElementById('resumenGrasa');
+      var pasos = document.getElementById('pasos');
+      var precio = document.getElementById('precio');
+      var tablaBody = document.getElementById('costosTablaBody');
+      var costoTotal = document.getElementById('costoTotal');
+      var ventaTotal = document.getElementById('ventaTotal');
+      var ventaDetalle = document.getElementById('ventaDetalle');
+      var costoTotalTabla = document.getElementById('costoTotalTabla');
 
-      b.addEventListener('click', function () {
-        var isDark = r.dataset.theme === 'dark';
-        r.dataset.theme = isDark ? 'light' : 'dark';
+      function ocultarSecciones() {
+        pasos.classList.add('hidden');
+        precio.classList.add('hidden');
+      }
+
+      function convertirAMl(cantidad, unidad) {
+        return unidad === 'lt' ? Number(cantidad) * 1000 : Number(cantidad);
+      }
+
+      function formatearMoneda(valor) {
+        return 'C$' + Number(valor).toFixed(2);
+      }
+
+      function formatearCantidad(valor, unidad) {
+        if (unidad === 'ml') {
+          return Math.round(valor) + ' ml';
+        }
+        if (unidad === 'g') {
+          return Math.round(valor) + ' g';
+        }
+        if (unidad === 'u') {
+          return (Number(valor).toFixed(2).replace(/\.00$/, '').replace(/(\.\d)0$/, '$1')) + ' und';
+        }
+        return (Number(valor).toFixed(2).replace(/\.00$/, '').replace(/(\.\d)0$/, '$1')) + ' ' + unidad;
+      }
+
+      function calcularCosto(ml) {
+        if (ml <= 0) {
+          return { total: 0, venta: 0, items: [] };
+        }
+
+        var factor = ml / 1000;
+        var items = [
+          { nombre: 'Aceite usado reciclado', cantidad: ml, unidad: 'ml', costo: 130 * factor },
+          { nombre: 'Raja de leña', cantidad: factor, unidad: 'u', costo: 7 * factor },
+          { nombre: 'Maíz (100 g)', cantidad: 100 * factor, unidad: 'g', costo: 15 * factor },
+          { nombre: 'Secador orgánico (100 g)', cantidad: 100 * factor, unidad: 'g', costo: 105 * factor },
+          { nombre: 'Gastos directos de producción', cantidad: factor, unidad: 'u', costo: 40 * factor },
+          { nombre: 'Mantenimiento y depreciación', cantidad: factor, unidad: 'u', costo: 5 * factor },
+          { nombre: 'Servicio básico y logística', cantidad: factor, unidad: 'u', costo: 15 * factor },
+          { nombre: 'Mano de obra directa', cantidad: factor, unidad: 'u', costo: 35 * factor }
+        ];
+
+        var total = items.reduce(function (sum, item) {
+          return sum + item.costo;
+        }, 0);
+
+        return {
+          total: total,
+          venta: total * 1.2,
+          items: items
+        };
+      }
+
+      function actualizarResumen(ml, total, venta) {
+        resumen.textContent = 'Para ' + ml + ' ml de aceite, el costo estimado del lote es ' + formatearMoneda(total) + ' y el precio de venta sugerido es ' + formatearMoneda(venta) + '.';
+      }
+
+      function renderTabla(items) {
+        var rows = items.map(function (item) {
+          return '<tr><td>' + item.nombre + '</td><td>' + formatearCantidad(item.cantidad, item.unidad) + '</td><td>' + formatearMoneda(item.costo) + '</td></tr>';
+        }).join('');
+
+        tablaBody.innerHTML = rows;
+      }
+
+      function actualizarCalculo() {
+        var campoCantidad = document.getElementById('cantidadGrasa');
+        var cantidad = Number(campoCantidad.value || 0);
+        var unidad = document.getElementById('unidadGrasa').value;
+
+        if (!Number.isFinite(cantidad) || cantidad <= 0) {
+          costoTotal.textContent = 'C$0.00';
+          ventaTotal.textContent = 'C$0.00';
+          costoTotalTabla.textContent = 'C$0.00';
+          ventaDetalle.textContent = 'Ingresa una cantidad válida de aceite para continuar.';
+          resumen.textContent = 'Ingresa la cantidad de aceite para calcular el costo y el precio de venta estimado.';
+          ocultarSecciones();
+          campoCantidad.setCustomValidity('Cantidad inválida');
+          return;
+        }
+
+        campoCantidad.setCustomValidity('');
+
+        var ml = convertirAMl(cantidad, unidad);
+        var resultado = calcularCosto(ml);
+        renderTabla(resultado.items);
+        costoTotal.textContent = formatearMoneda(resultado.total);
+        ventaTotal.textContent = formatearMoneda(resultado.venta);
+        costoTotalTabla.textContent = formatearMoneda(resultado.total);
+        ventaDetalle.textContent = 'Se aplica un margen del 20% sobre el costo total del lote.';
+        actualizarResumen(ml, resultado.total, resultado.venta);
+
+        precio.classList.remove('hidden');
+        pasos.classList.remove('hidden');
+      }
+
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        actualizarCalculo();
       });
+
+      ocultarSecciones();
+      actualizarCalculo();
     })();
   </script>
 </body>
